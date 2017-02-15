@@ -1,0 +1,16 @@
+server:
+  build: ./docker
+  volumes:
+    - ./:/app/
+  working_dir: /app/app/
+  command: npm start
+  environment:
+    - NODE_ENV=dev
+    - SESSION_SECRET=secret
+    - DATABASE_URL=mongo
+  ports:
+    - "8000:3000"
+  links:
+    - mongo
+mongo:
+  image: mongo

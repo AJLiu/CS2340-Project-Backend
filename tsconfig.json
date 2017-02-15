@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "commonjs",
+    "outDir": "build",
+    "sourceMap": true,
+    "jsx": "preserve",
+    "typeRoots": ["node_modules/@types"]
+  },
+  "exclude": [
+    "build",
+    "node_modules"
+  ]
+}
