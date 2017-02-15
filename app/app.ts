@@ -12,7 +12,7 @@ import * as index from './routes/index';
 import * as users from './routes/users';
 import {User} from './models/user';
 
-mongoose.connect('localhost:27017');
+mongoose.connect(process.env.MONGODB_URI);
 passport.use(User.createStrategy());
 
 passport.serializeUser(User.serializeUser());
