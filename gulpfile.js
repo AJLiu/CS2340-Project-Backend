@@ -18,7 +18,7 @@ gulp.task('build', ['lint'], (done) => {
 
 gulp.task('nodemon',['build'], (done) => {
   gutil.log(gutil.colors.blue("Starting server"));
-  nodemon({
+  return nodemon({
             script: path.join(__dirname, 'build/bin/www.js'),
             watch: ['build/'],
             env: {'NODE_ENV': 'dev', 'SESSION_SECRET': 'secret'}
@@ -30,7 +30,7 @@ gulp.task('nodemon',['build'], (done) => {
 
 gulp.task('watch', (done) => {
   gutil.log('Watching', gutil.colors.magenta('./app'));
-  gulp.watch('app/**/*.ts', ['build']);
+  return gulp.watch('app/**/*.ts', ['build']);
 });
 
 gulp.task('lint', (done) => {
