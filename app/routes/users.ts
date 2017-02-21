@@ -52,16 +52,17 @@ router.post('/edit', ensureLoggedIn, function (req: any, res, next) {
       next(err);
     }
     else {
-      console.log(account);
-      console.log(req.body);
-      account.address = typeof req.body.address !== 'undefined' ? req.body.address : account.address;
-      account.firstName = typeof req.body.firstName !== 'undefined' ? req.body.firstName : account.firstName;
-      account.lastName = typeof req.body.lastName !== 'undefined' ? req.body.lastName : account.lastName;
-      account.title = typeof req.body.title !== 'undefined' ? req.body.title : account.title;
-      account.email = typeof req.body.email !== 'undefined' ? req.body.email : account.email;
-      console.log(account);
+      let newAccount:any = {};
+      newAccount.address = req.body.address;
+      newAccount.firstName = req.body.firstName;
+      newAccount.lastName = req.body.lastName;
+      newAccount.title = req.body.title;
+      newAccount.email = req.body.email;
+
+      account = Object.assign(account, newAccount);
+
       account.save().then(function () {
-        res.json({ message: 'User Updated' });
+        res.json(newAccount);
       });
     }
   });
