@@ -11,7 +11,7 @@ const router = express.Router();
 
 /* GET users listing. */
 router.get('/', ensureLoggedIn, function (req: any, res, next) {
-  res.json({ username: req.session.passport.user });
+  res.json(req.user);
 });
 
 /* POST register new user. */
@@ -42,7 +42,7 @@ router.post('/register', validate(validateRegister), function (req, res, next) {
 
 /* POST login user. */
 router.post('/login', validate(validateLogin), passport.authenticate('local'), function (req: any, res) {
-  res.json(req.user);
+  res.json({ username: req.session.passport.user });
 });
 
 /* POST edit user. */
