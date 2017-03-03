@@ -7,9 +7,11 @@ import * as path from 'path';
 import * as passport from 'passport';
 import {Strategy} from 'passport-local';
 import * as session from 'express-session';
+import * as autoIncrement from 'mongoose-auto-increment'
 
 import * as index from './routes/index';
 import * as users from './routes/users';
+import * as reports from './routes/reports'
 import {User} from './models/user';
 
 mongoose.connect(process.env.MONGODB_URI);
@@ -35,6 +37,7 @@ app.use(passport.session());
 
 app.use('/', index);
 app.use('/api/users', users);
+app.use('/api/reports', reports);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

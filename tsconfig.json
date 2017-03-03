@@ -4,7 +4,6 @@
     "module": "commonjs",
     "outDir": "build",
     "sourceMap": true,
-    "jsx": "preserve",
     "typeRoots": ["node_modules/@types"]
   },
   "exclude": [
