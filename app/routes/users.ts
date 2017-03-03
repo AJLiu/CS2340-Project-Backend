@@ -58,6 +58,7 @@ router.post('/edit', ensureLoggedIn, function (req: any, res, next) {
       newAccount.lastName = req.body.lastName;
       newAccount.title = req.body.title;
       newAccount.email = req.body.email;
+      newAccount.userType = req.body.userType;
 
       account = Object.assign(account, newAccount);
 
