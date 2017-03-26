@@ -25,3 +25,12 @@ export const validateSourceReport = {
     'waterCondition': Joi.string().valid('Waste', 'TreatableClear', 'TreatableMuddy', 'Potable').required()
   }
 };
+
+export const validatePurityReport = {
+  body: {
+    'location': Joi.object({ 'lat': Joi.number().required(), 'long': Joi.number().required() }).required(),
+    'waterCondition': Joi.string().valid('Safe', 'Treatable', 'Unsafe').required(),
+    'virusPPM': Joi.number().required(),
+    'contaminantPPM': Joi.number().required()
+  }
+};
