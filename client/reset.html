@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Reset your account password</title>
+    <link rel="stylesheet" href="stylesheets/style.css">
+</head>
+<body>
+<div class="card">
+    <h1>Reset your password</h1>
+    <form id="form">
+        <input name="password" type="text" placeholder="enter your password">
+        <button type="submit">Reset</button>
+    </form>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+        $(function() {
+          $('#form').submit(function(event) {
+            event.preventDefault();
+            var formEl = $(this);
+            var submitButton = $('button[type=submit]', formEl);
+            $.ajax({
+                     type: 'POST',
+                     url: window.location.href,
+                     accept: {
+                       javascript: 'application/javascript'
+                     },
+                     data: formEl.serialize(),
+                     beforeSend: function() {
+                       submitButton.prop('disabled', 'disabled');
+                     }
+                   }).done(function(data) {
+              window.location.href = window.location.origin;
+            });
+          });
+        });
+    </script>
+</div>
+</body>
+</html>

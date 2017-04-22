@@ -16,7 +16,8 @@ export interface IUser extends PassportLocalDocument {
   lastName: string,
   title: string,
   address: string,
-  userType: UserTypes
+  userType: UserTypes,
+  passwordReset: string
 }
 interface IUserModel<T extends Document> extends PassportLocalModel<T> {}
 
@@ -29,7 +30,8 @@ const userSchema: PassportLocalSchema = new Schema({
   address: String,
   userType: {type: String, enum: ['User', 'Worker', 'Manager', 'Admin']},
   isLocked: Boolean,
-  isBanned: Boolean
+  isBanned: Boolean,
+  passwordReset: String
 });
 
 userSchema.plugin(passportLocalMongoose);

@@ -34,3 +34,9 @@ export const validatePurityReport = {
     'contaminantPPM': Joi.number().required()
   }
 };
+
+export const validateReset = {
+  body: {
+    'username': Joi.string().required()
+  }
+};
