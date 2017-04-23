@@ -77,7 +77,7 @@ router.post('/reset', validate(validateReset), function (req: any, res, next) {
   console.log(req.body);
 
   User.findByUsername(req.body.username, false, function (err, account: IUser) {
-    if (err) {
+    if (err || account == null) {
       res.status(httpStatus.BAD_REQUEST).json({
         message: 'There does not exist a user with that username'
       });
