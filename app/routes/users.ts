@@ -74,6 +74,8 @@ router.post('/edit', ensureLoggedIn, function (req: any, res, next) {
 });
 
 router.post('/reset', validate(validateReset), function (req: any, res, next) {
+  console.log(req.body);
+
   User.findByUsername(req.body.username, false, function (err, account: IUser) {
     if (err) {
       res.status(httpStatus.BAD_REQUEST).json({
